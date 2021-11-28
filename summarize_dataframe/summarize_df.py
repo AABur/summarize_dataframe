@@ -13,7 +13,11 @@ def data_summary(df: pd.DataFrame) -> pd.DataFrame:
         the number of row and columns
         """
         row, col = df.shape
-        return pd.DataFrame(data=[[row], [col]], columns=['Values'], index=['Number of rows', 'Number of columns'])
+        return pd.DataFrame(
+            data=[[row], [col]],
+            columns=['Values'],
+            index=['Number of rows', 'Number of columns']
+        )
 
     def _dtypes_freq(df: pd.DataFrame) -> pd.DataFrame:
         """
@@ -28,7 +32,11 @@ def data_summary(df: pd.DataFrame) -> pd.DataFrame:
             else:
                 counter[tmp] = 1
         values = [[value] for value in counter.values()]
-        return pd.DataFrame(data=values, columns=['Values'], index=list(counter.keys()))
+        return pd.DataFrame(
+            data=values,
+            columns=['Values'],
+            index=list(counter.keys())
+        )
     result_df = pd.concat([_shape(df), _dtypes_freq(df)])
     return result_df
 
